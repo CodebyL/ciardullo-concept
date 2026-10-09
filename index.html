@@ -48,15 +48,15 @@ h1,h2,h3{font-family:var(--disp);font-weight:700;line-height:.98;letter-spacing:
 .hdr .wrap{display:flex;align-items:center;gap:30px;min-height:78px}
 .brand{display:flex;flex-direction:column;justify-content:center;text-decoration:none;margin-right:auto;min-height:48px}
 .brand b{font-family:var(--disp);font-weight:800;font-size:1.5rem;letter-spacing:-.03em;line-height:1;text-transform:uppercase}
-.brand small{font-size:.68rem;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--soft);margin-top:4px}
+.brand small{white-space:nowrap;font-size:.68rem;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--soft);margin-top:4px}
 .nav{display:flex;gap:26px}
-.nav a{text-decoration:none;font-weight:500;padding:12px 0;background:linear-gradient(var(--olive),var(--olive)) 0 100%/0 2px no-repeat;transition:background-size .3s var(--ease)}
+.nav a{white-space:nowrap;text-decoration:none;font-weight:500;padding:12px 0;background:linear-gradient(var(--olive),var(--olive)) 0 100%/0 2px no-repeat;transition:background-size .3s var(--ease)}
 .nav a:hover{background-size:100% 2px}
 .hdr .tel{font-weight:700;text-decoration:none;white-space:nowrap;min-height:48px;display:inline-flex;align-items:center}
-.hdr .btn{min-height:46px;padding:0 20px;font-size:.9rem}
+.hdr .btn{min-height:46px;padding:0 20px;font-size:.9rem;white-space:nowrap}
 .menu{display:none;min-height:46px;min-width:48px;border:1.5px solid var(--ink);background:none;font-weight:600;padding:0 14px;cursor:pointer}
-@media(max-width:1080px){.hdr .tel{display:none}}
-@media(max-width:900px){
+@media(max-width:1240px){.hdr .tel{display:none}.nav{gap:22px}.hdr .wrap{gap:24px}}
+@media(max-width:1060px){
  .nav{display:none;position:absolute;left:0;right:0;top:100%;background:var(--sand);flex-direction:column;gap:0;padding:6px 20px 18px;border-bottom:1px solid var(--line)}
  .nav.open{display:flex}.nav a{padding:16px 0;border-bottom:1px solid var(--line);background:none}
  .menu{display:inline-flex;align-items:center}.hdr .btn{display:none}
@@ -137,7 +137,7 @@ section{padding:110px 0}
 .pt button svg{width:34px;height:34px;flex:none}
 .pt button:hover{border-color:var(--ink)}
 .pt button[aria-pressed=true]{background:var(--moss);border-color:var(--moss);color:var(--sand)}
-.cl{display:flex;flex-wrap:wrap;gap:10px}
+.cl{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px 8px}
 .cl button{display:flex;flex-direction:column;align-items:center;gap:6px;border:0;background:none;cursor:pointer;font-size:.8rem;font-weight:600;min-width:64px;padding:4px}
 .cl button i{width:48px;height:48px;border-radius:50%;background:var(--sw);box-shadow:inset 0 0 0 1px rgba(0,0,0,.1);transition:transform .25s var(--ease)}
 .cl button[aria-pressed=true] i{box-shadow:0 0 0 3px var(--card),0 0 0 5px var(--ink)}
@@ -393,7 +393,7 @@ $$(".rv,#pb").forEach(function(e){io?io.observe(e):e.classList.add("in")});
 if(!io)$("#pbl").textContent="Built";
 
 /* paver studio */
-var BL={charcoal:["Charcoal blend",["#4b4d4f","#5a5c5d","#3f4143","#55575a"],"#2b2c2e"],tan:["Tan blend",["#c9b08a","#b99c74","#d6c19c","#a98d68"],"#8a6f4e"],granite:["Gray granite",["#9fa3a4","#8f9496","#b0b3b2","#7f8486"],"#5d6264"],sand:["Sandstone",["#d9bf98","#cfa97a","#e2cba7","#c39a6c"],"#a0774f"]};
+var BL={charcoal:["Charcoal blend",["#4b4d4f","#5a5c5d","#3f4143","#55575a"],"#2b2c2e"],tan:["Tan blend",["#c9b08a","#b99c74","#d6c19c","#a98d68"],"#8a6f4e"],granite:["Gray granite",["#9fa3a4","#8f9496","#b0b3b2","#7f8486"],"#5d6264"],sand:["Sandstone",["#d9bf98","#cfa97a","#e2cba7","#c39a6c"],"#a0774f"],terra:["Terracotta",["#a5583c","#b5694a","#94503a","#c07a58"],"#6e3a28"],blue:["Bluestone",["#5f6f7a","#6e7e88","#56646d","#7a8891"],"#3d474e"]};
 var st={pat:"herring",col:"charcoal",border:true},laid=false,svg=$("#patio");
 var PN={herring:"Herringbone",running:"Running bond",basket:"Basketweave",ashlar:"Ashlar"};
 var cg=$("#col");Object.keys(BL).forEach(function(k){var b=d.createElement("button");b.type="button";b.setAttribute("aria-pressed",k===st.col);b.style.setProperty("--sw","linear-gradient(135deg,"+BL[k][1][0]+" 0 50%,"+BL[k][1][2]+" 50%)");b.innerHTML="<i></i>"+BL[k][0];b.addEventListener("click",function(){st.col=k;$$("button",cg).forEach(function(o){o.setAttribute("aria-pressed",o===b)});lay();});cg.appendChild(b);});
